@@ -16,12 +16,18 @@
 <meta property="og:site_name" content="Welcome to gnn&#39;s blogs！">
 <meta property="og:description" content="1.数字图像处理（Digital Image Processing），python1.0任务要求教材：数字图像处理-冈萨雷斯第二或三版(PDF)，网站上有电子版可看。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/487c50b2-42c6-4ca9-ac4e-751da0e1f5a3.png?msec=1698833554682">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/dfb4b858-ed9c-4bec-b260-26e3ede90423.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/2eee6959-2e51-4b22-b32a-3472919c3a5b.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/b27a17a1-194f-47f0-9c01-ed40c26f2ed3.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/e3280b6f-6fb1-473e-8d18-9d132b128310.png">
 <meta property="article:published_time" content="2023-11-01T08:11:55.548Z">
-<meta property="article:modified_time" content="2023-11-01T08:56:51.250Z">
+<meta property="article:modified_time" content="2023-11-01T14:33:38.112Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="数字图像处理">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///D:/others/useful/Hexo/picture/487c50b2-42c6-4ca9-ac4e-751da0e1f5a3.png?msec=1698833554682">
   
     <link rel="alternative" href="/atom.xml" title="Welcome to gnn&#39;s blogs！" type="application/atom+xml">
   
@@ -206,9 +212,58 @@
 <h3 id="1-1绪论、数字图像基础、空间域-频域图像增强、图像复原、图像压缩、"><a href="#1-1绪论、数字图像基础、空间域-频域图像增强、图像复原、图像压缩、" class="headerlink" title="1.1绪论、数字图像基础、空间域&#x2F;频域图像增强、图像复原、图像压缩、"></a>1.1绪论、数字图像基础、空间域&#x2F;频域图像增强、图像复原、图像压缩、</h3><p>前段时间把这部分看的差不多了。</p>
 <hr>
 <h3 id="1-2形态学图像处理"><a href="#1-2形态学图像处理" class="headerlink" title="1.2形态学图像处理"></a>1.2形态学图像处理</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kh411X7Qv?p=26">[5.1.1]–3.1形态学基本概念视频_哔哩哔哩_bilibili</a></p>
+<h4 id="1-2-1基础"><a href="#1-2-1基础" class="headerlink" title="1.2.1基础"></a>1.2.1基础</h4><h5 id="1-概念"><a href="#1-概念" class="headerlink" title="(1)概念"></a>(1)概念</h5><p><strong>形态学</strong>：生物学中研究动植物<code>结构</code>的分支。</p>
+<p><strong>数学形态学</strong>：<code>集合代数</code>为基础，用<code>集合论</code>描述<code>目标几何结构</code>。</p>
+<p><strong>图像数学形态学处理</strong>：<code>形态</code>为基础，对<code>图像</code>进行分析。根据形态的<code>结构元素</code>，度量提取图像中相应<code>形状</code>。</p>
+<h5 id="2-集合论"><a href="#2-集合论" class="headerlink" title="(2)集合论"></a>(2)集合论</h5><p>点集—&gt;结构特征。</p>
+<p>运算：并交补差、平移(A)z—将A平移到点z、反射^A—关于原点对称。</p>
+<h4 id="1-2-2实现算法"><a href="#1-2-2实现算法" class="headerlink" title="1.2.2实现算法"></a>1.2.2实现算法</h4><p><strong>膨胀</strong>：A被B膨胀⊕，则结果点集是满足条件：B的反射的平移和A的交集不为空。<code>可用来修复断裂图像，填补物体空洞，边界向外扩张。</code></p>
+<p><strong>腐蚀</strong>：A被B腐蚀⊝，则结果点集是满足条件：B的z平移完全包含于A。可用来<code>匹配</code>两图像，若两图像一样则腐蚀结果为一点。也可用来处理膨胀后结果图像中的<code>毛刺</code>。<code>消除边界点，边界向内收缩，消除小且无意义的物体。</code>比滤波器效果更好。</p>
+<p><strong>应用</strong>：筛选出15*15大小的方块。先腐蚀匹配，再膨胀复原。</p>
+<p><img src="file:///D:/others/useful/Hexo/picture/487c50b2-42c6-4ca9-ac4e-751da0e1f5a3.png?msec=1698833554682" alt="487c50b242c64ca9ac4e751da0e1f5a3"></p>
+<p><strong>图像形态学处理的运算实现：二值图像</strong></p>
+<p>实际上是利用一个<code>领域</code>内的<code>结构元素（模板：正方形等）</code>对给定<code>二值图像</code>每个元素进行<code>逻辑运算</code>。有点类似空间域（算术运算）。并：膨胀。与：腐蚀。</p>
+<h4 id="1-2-3应用"><a href="#1-2-3应用" class="headerlink" title="1.2.3应用"></a>1.2.3应用</h4><p><strong>开运算</strong>：A○B，先腐蚀再膨胀。<code>平滑大物体边界，消除小物体，在纤细处分离物体</code>。</p>
+<p><strong>闭运算</strong>：A●B，先膨胀再腐蚀。<code>平滑大物体边界，填充空洞或断裂，连接临近物体</code>。</p>
+<p><strong>例子</strong>：</p>
+<p>(1)指纹识别采集</p>
+<img src="file:///D:/others/useful/Hexo/picture/dfb4b858-ed9c-4bec-b260-26e3ede90423.png" title alt="dfb4b858-ed9c-4bec-b260-26e3ede90423" style="zoom:50%;">
+
+<p>(2)边界提取：先膨胀或腐蚀，再做和原图的减运算。</p>
+<p>(3)识别物体形状：击中击不中变换</p>
+<p>原图像A，结构元素对B&#x3D;(E,F)，E和F分别为两个结构元素。识别物体形状的结果*<em>A</em>B&#x3D;(A⊝E)∩(A补⊝F)**，即先用和A相同的内部形状E腐蚀A，再用和A相同的外部形状F腐蚀A的补集，相交的结果。识别结果为匹配则为一点。</p>
+<img title src="file:///D:/others/useful/Hexo/picture/2eee6959-2e51-4b22-b32a-3472919c3a5b.png" alt="2eee6959-2e51-4b22-b32a-3472919c3a5b" style="zoom:67%;">
+
+<h4 id="1-2-4-实验"><a href="#1-2-4-实验" class="headerlink" title="1.2.4 实验"></a>1.2.4 实验</h4><p>(1)平台搭建：</p>
+<p>之前都是看的课本，这里才刷视频。公众号：啥都会一点的研究生，本节课资料对应序号【04】。</p>
+<p>找到”D:\study\DIP\04 北交-图像处理与机器学习{1}–第一章绪论{6}–课程实验平台及实验图像“。</p>
+<p>新建文件夹platform，将bb.rar和实验平台程序包1和2.rar中内容均加压至platform中。</p>
+<p>打开vs2019，打开解决方案MFCApplication1.sln。我一开始就是2019，MFC、环境什么的最初也是扩展好的，只需要把顶部配置管理器改为X86，再重新<code>生成</code>解决方案，再<code>调试</code>开始执行(不调试)。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">环境配置教程：https://pan.baidu.com/s/1cny086ha2QAdb6AOfaQw3g提取码：zje0</span><br></pre></td></tr></table></figure>
+
+<p>至此，平台安装调试成功。</p>
+<img src="file:///D:/others/useful/Hexo/picture/b27a17a1-194f-47f0-9c01-ed40c26f2ed3.png" title alt="b27a17a1-194f-47f0-9c01-ed40c26f2ed3" style="zoom:50%;">
+
+<p>(2)实验一《打开图像》</p>
+<p>D:\study\DIP\04 北交-图像处理与机器学习{1}–第一章绪论{6}–课程实验平台及实验图像\platform(1.6.2)–bb。</p>
+<p>修改bb.lst第二行为自己的路径，这个文件用于连续显示图片。</p>
+<p>不过这里不涉及图像处理算法，不作要求。</p>
+<p>(3)实验二《图像直方图计算》</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MFCApplication1View.cpp.histCompute()基于理论知识不难理解该代码，直方图就是求解图像中对应每个灰度级的元素个数，所以涉及一个累加的过程。此外，MFCApplication1View.h里面已经对直方图所需数据结构及其显示函数进行过了定义。MFCApplication1View.cpp也已经对实验平台MFC界面“直方图绘制”的事件响应函数进行了定义。重点只在于考察对于直方图求解原理的掌握。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CMFCApplication1View::histCompute</span><span class="params">(BYTE*image, <span class="type">int</span> width, <span class="type">int</span> height)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//计算直方图</span></span><br><span class="line">	<span class="type">int</span> n;<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span> (n = <span class="number">0</span>; n &lt; <span class="number">256</span>; n++)</span><br><span class="line">		hist[n] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> i, j;<span class="comment">//累加计算</span></span><br><span class="line">	BYTE gray;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; height; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; width; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			gray = image[i * width + j];</span><br><span class="line">			hist[gray]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="file:///D:/others/useful/Hexo/picture/e3280b6f-6fb1-473e-8d18-9d132b128310.png" alt="e3280b6f-6fb1-473e-8d18-9d132b128310"></p>
+<p>(4)实验三《直方图均衡》</p>
+<p>计算直方图Ha(D)——计算新的灰度级——用新的灰度级替换原来的灰度级。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MFCApplication1View.h里面已经对直方图均衡所需变量和方法进行声明，MFCApplication1View.cpp也对相应MFC实验平台“直方图均衡”按钮的事件响应函数进行了定义。重点只在于考察直方图均衡的计算方式和编程实现。编写MFCApplication1View.cpp下hisEqualiz()函数。</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>(5)</p>
+<p>(6)</p>
 <p><code>2023.11.1-2023.11.</code></p>
 <hr>
-<h3 id="1-3图像分割"><a href="#1-3图像分割" class="headerlink" title="1.3图像分割"></a>1.3图像分割</h3><p><code>2023.11.1-2023.11.</code></p>
+<h3 id="1-3图像分割"><a href="#1-3图像分割" class="headerlink" title="1.3图像分割"></a>1.3图像分割</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kh411X7Qv?p=30">[7.1.1]–4.1图像分割引言_哔哩哔哩_bilibili</a></p>
+<p><code>2023.11.1-2023.11.</code></p>
 <hr>
 <h2 id="2-机器学习（Machine-Learning）-python-pytorch"><a href="#2-机器学习（Machine-Learning）-python-pytorch" class="headerlink" title="2.机器学习（Machine Learning）, python, pytorch"></a>2.机器学习（Machine Learning）, python, pytorch</h2><h3 id="2-0任务要求"><a href="#2-0任务要求" class="headerlink" title="2.0任务要求"></a>2.0任务要求</h3><p><strong>课程</strong>：李宏毅2021&#x2F;2022春机器学习课程</p>
 <p><strong>学习内容</strong>：Introduction of Deep Learning, What to do if my network fails to train, Image as input, Generation, Self-supervised Learning</p>
