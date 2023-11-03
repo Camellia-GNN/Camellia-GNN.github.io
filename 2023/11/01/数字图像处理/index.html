@@ -33,7 +33,7 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/a7c7890f-ac1d-48ff-abf7-6b528791b5cb.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/5f32e2ef-2931-4ccb-872d-ce023350f96c.png">
 <meta property="article:published_time" content="2023-11-01T08:11:55.548Z">
-<meta property="article:modified_time" content="2023-11-02T09:50:27.409Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:12.725Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="数字图像处理">
 <meta property="article:tag" content="大四上">
@@ -331,7 +331,101 @@
 <p><code>2023.11.2</code></p>
 <hr>
 <h3 id="3-图像分割"><a href="#3-图像分割" class="headerlink" title="3.图像分割"></a>3.图像分割</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kh411X7Qv?p=30">[7.1.1]–4.1图像分割引言_哔哩哔哩_bilibili</a></p>
-<h4 id="3-1引言"><a href="#3-1引言" class="headerlink" title="3.1引言"></a>3.1引言</h4><h4 id="3-2基于阈值的分割算法"><a href="#3-2基于阈值的分割算法" class="headerlink" title="3.2基于阈值的分割算法"></a>3.2基于阈值的分割算法</h4><h4 id="3-3基于边缘的分割算法"><a href="#3-3基于边缘的分割算法" class="headerlink" title="3.3基于边缘的分割算法"></a>3.3基于边缘的分割算法</h4><h4 id="3-4霍夫变换"><a href="#3-4霍夫变换" class="headerlink" title="3.4霍夫变换"></a>3.4霍夫变换</h4><h4 id="3-5基于区域的分割算法"><a href="#3-5基于区域的分割算法" class="headerlink" title="3.5基于区域的分割算法"></a>3.5基于区域的分割算法</h4><p><code>2023.11.2-2023.11.3</code></p>
+<h4 id="3-1引言"><a href="#3-1引言" class="headerlink" title="3.1引言"></a>3.1引言</h4><p>【为什么图像分割？】</p>
+<p>因为划出感兴趣的部分并进行分析。</p>
+<p>【什么是图像分割？】</p>
+<p>将图像划分为若干不相交的区域。</p>
+<p>【如何进行图像分割？】</p>
+<ul>
+<li><p>以花粉图为例，基于阈值。</p>
+</li>
+<li><p>以肝脏CT图为例，基于边缘、区域。</p>
+</li>
+<li><p>以合照为例，基于学习，预处理(pre-processing)，然进行特征提取(feature extraction)，最后进行分类(classification)。</p>
+</li>
+</ul>
+<h4 id="3-2基于阈值的分割算法"><a href="#3-2基于阈值的分割算法" class="headerlink" title="3.2基于阈值的分割算法"></a>3.2基于阈值的分割算法</h4><p>(1)阈值分割</p>
+<ul>
+<li><p>f(x,y)为原图，g(x,y)为分割后图像，T为阈值。</p>
+</li>
+<li><p>T分为：全局(整幅图像)、局部(局部图像)、动态阈值(空间坐标)。</p>
+</li>
+<li><p>$ g(x,y)&#x3D;\begin{cases}<br>1 &amp; f(x,y)&gt;T \<br>0 &amp; f(x,y)≥T<br>\end{cases}$</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Markdown</span>里面公示的编辑方法：</span><br><span class="line">$$：双dollar间编辑公示内容；</span><br><span class="line">分段函数的写法(\\换行):表达式=\<span class="title function_">begin</span>(cases)</span><br><span class="line">                    公式一 &amp; 条件一 \\</span><br><span class="line">                    公式二 &amp; 条件二 \\</span><br><span class="line">                    公式三 &amp; 条件三</span><br><span class="line">                    \<span class="title function_">end</span>(cases)</span><br><span class="line">上标和下标的写法：_下标，^上标，双或多标&#123;ij…&#125;</span><br><span class="line">分数的写法：表达式=\frac&#123;分子&#125;&#123;分母&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2)阈值选取</p>
+<ul>
+<li><p>直方图技术：<br>前景背景灰度值差别大，且前景灰度分布均匀。<br>基于直方图的全局阈值算法：初始阈值$T_0$—&gt;根据$T_0$将图像像素分为两组$G_1,G_2$—&gt;分别计算两组平均灰度$μ_1,μ_2$—&gt;计算新阈值$T’&#x3D;\frac{1}{2}(μ_1+μ_2)$。重复上述步骤，直至满足要求。</p>
+</li>
+<li><p>最小误差阈值法：<br>X&#x3D;Minimize{ θP(t)+(1-θ)Q(t) }<br>θ：目标图像占整幅图像的比例；<br>P(t)：是目标图像灰度分布的概率密度函数p(t)从阈值t到+∞的积分，也就是目标图像的误差；<br>Q(t)：是背景灰度分布的概率密度函数p(t)从阈值-∞到阈值t的积分，也就是背景的误差；<br>要想使总误差最小，应该对X求导，并令X’&#x3D;0，求出阈值t。</p>
+</li>
+<li><p>最大方差阈值法(大津阈值法)：应用很多<br>根据直方图选取初始阈值$T_0$—&gt;根据$T_0$将像素分为两组$G_1,G_2$—&gt;计算两组灰度之间的方差$σ^2$—&gt;找出使得方差最大时的阈值$T’$。</p>
+</li>
+</ul>
+<h4 id="3-3基于边缘的分割算法"><a href="#3-3基于边缘的分割算法" class="headerlink" title="3.3基于边缘的分割算法"></a>3.3基于边缘的分割算法</h4><p>(1)检测模板</p>
+<p>点、线……</p>
+<p>(2)边缘提取</p>
+<p>一阶、二阶<strong>导数</strong>：Robert&#x2F;Prewitt&#x2F;Sobel算子、Laplace算子</p>
+<p>图像<strong>高通</strong>滤波器</p>
+<p>(3)多级边缘检测—Canny算子</p>
+<p>预处理降噪：高斯低通滤波，平滑图像；</p>
+<p>计算梯度：4方向；</p>
+<p>非极大值移植：局部最大值；</p>
+<p>边缘跟踪：双阈值检测；</p>
+<h4 id="3-4霍夫变换"><a href="#3-4霍夫变换" class="headerlink" title="3.4霍夫变换"></a>3.4霍夫变换</h4><p>(1)边界点不连续问题 </p>
+<p>找x,y平面中共线点最多的那条直线；</p>
+<p>x,y平面——参数平面；</p>
+<p>霍夫(Hough)变换——参数平面中相交直线最多的点，对应x,y平面的直线即为所求直线；</p>
+<p>(2)Hough变换</p>
+<ul>
+<li>优点：</li>
+</ul>
+<p>    抗噪；</p>
+<p>    可在信噪比低的条件检测定位<strong>直</strong>线、解析<strong>曲</strong>线；</p>
+<p>    将二值图变换到hough参数空间；</p>
+<p>    在参数空间内用极值点检测完成目标检测；</p>
+<ul>
+<li>缺点</li>
+</ul>
+<p>    二值化；</p>
+<p>    边缘检测；</p>
+<p>    损失原图信息；</p>
+<p>(3)算法实现hough</p>
+<ul>
+<li><p>由于直线y&#x3D;ax+b，垂直时a无穷大；</p>
+</li>
+<li><p>因此采用极坐标xcosθ+ysinθ&#x3D;ρ，有曲线(θ，ρ)；</p>
+</li>
+<li><p>思路：根据点的分布<strong>预测θ</strong>的大致范围——利用<strong>交点累加器</strong>或<strong>统计直方图</strong>找出相交线最多的点。</p>
+</li>
+</ul>
+<p>(4)Hough变换应用</p>
+<p>倾斜表格校正：原图—二值化—直线检测—矫正</p>
+<h4 id="3-5基于区域的分割算法"><a href="#3-5基于区域的分割算法" class="headerlink" title="3.5基于区域的分割算法"></a>3.5基于区域的分割算法</h4><p>(1)前言</p>
+<p>利用像素空间性区域相同，性质相似；</p>
+<p>分为：区域生长法，分裂合并法；</p>
+<p>区域5大性质：完备、连通、独立、单一、互斥性</p>
+<p><strong>(2)区域生长法</strong></p>
+<ul>
+<li>思路</li>
+</ul>
+<p>    种子像素——？性质相似？——合并像素到区域——新种子重复——直至没有满足条件的像素</p>
+<ul>
+<li>如何确定种子像素</li>
+</ul>
+<p>    人机交互式分割(医学图像)：人为选择一个种子；</p>
+<p>    基于直方图粗分割结果；</p>
+<ul>
+<li>如何判断性质相似</li>
+</ul>
+<p>    基于区域灰度差：存在欠分割、过分割问题；</p>
+<p>    基于区域灰度分布统计性质：划分若干区域——累计每个区域灰度——作出直方图  </p>
+<p><strong>(3)分裂合并法</strong></p>
+<p>思路：根据方差是否为零(即图中是否至少包含二值)划分若干区域，直至方差为零则不再分裂。再根据区域一致性决定是否进行合并；</p>
+<p>一致性测度：累计灰度统计直方图；</p>
+<p><code>2023.11.3</code></p>
 <hr>
 
       
