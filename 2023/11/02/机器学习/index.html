@@ -17,7 +17,7 @@
 <meta property="og:description" content="机器学习（Machine Learning）, python, pytorch0.任务要求课程：李宏毅2021&#x2F;2022春机器学习课程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-11-03T06:20:51.686Z">
+<meta property="article:modified_time" content="2023-11-03T13:09:20.016Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -213,11 +213,57 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">语音识别(speech recognition) ——&gt; <span class="title function_">f</span>(audio)=<span class="string">&quot;character&quot;</span></span><br><span class="line">图像识别(image recognition) ——&gt; <span class="title function_">f</span>(image)=<span class="string">&quot;character&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>着重研究里面的<strong>深度学习</strong>技术</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">1、函数f是(类)神经网络(neural network)。</span><br><span class="line">2、函数任务——输入——输出：</span><br><span class="line">    (1)regression回归任务——向量(vector)——标量(scalar)；</span><br><span class="line">    (2)classification分类任务——矩阵(matrix：图像等)——类(class)；</span><br><span class="line">    (3)序列(sequence：语音、文本等)——text文本、image图像；</span><br><span class="line">3、例如：第i讲的作业</span><br><span class="line">HomeWork1：COVID-19确诊率预测的输入是vector，输出是scalar；</span><br><span class="line">HomeWork2：Phoneme Classification(语音识别的简化版)的输入是vector，输出是class；</span><br><span class="line">HomeWork3：Image Classification的输入时matrix，输出是classification；</span><br><span class="line">HomeWork4：Speaker Classification的输入是sequence，输出是classification；</span><br><span class="line">HomeWork5：Machine Translation的输入是sequence，输出是text；</span><br><span class="line">HomeWork6：Anime Face Generation(动漫人脸生成)的输出是image；</span><br><span class="line">4、学习路线：</span><br><span class="line">【lecture 1-5】————supervised learning(监督学习-标注)</span><br><span class="line">               |————宝可梦或数码宝贝(pokemon or digimon)</span><br><span class="line">               |————training data</span><br><span class="line">               |————labels</span><br><span class="line">【lecture 7】————self-supervised learning(自监督学习-不用标注)</span><br><span class="line">               |————预训练Pre-train</span><br><span class="line">               |————基础任务：原图——变色图——翻转图对比判断</span><br><span class="line">               |————下流任务(Downstream Tasks)：宝可梦or数码宝贝、汽车or自行车、猫or狗、苹果or橘子</span><br><span class="line">               |————Pre-train Model(Foundation Model)和Downstream Tasks==OS和Application</span><br><span class="line">               |————常见的预训练模型有BERT，后来又有GPT等</span><br><span class="line">【lecture 6】————Generative Adversarial[ˌædvəˈseərɪəl] Network(生成对抗网络GAN)</span><br><span class="line">               |————Unsupervised abstractive summarization</span><br><span class="line">               |————Unsupervised translation</span><br><span class="line">               |————Unsupervised ASR(automatic speech recognition)</span><br><span class="line">【lecture 12】————Reinforcement[ˌri:ɪnˈfɔ:smənt] Learning(强化学习RL)</span><br><span class="line">               |————不好human label的时候，如下围棋等 </span><br><span class="line">               |————但是可以人为判断result好坏</span><br><span class="line">【lecture 8】————Anomaly[əˈnɑməli] Detection(异常检测)</span><br><span class="line">               |————可以回答&quot;I don&#x27;t know.&quot; </span><br><span class="line">【lecture 9】————Explainable AI</span><br><span class="line">               |————可以解释why </span><br><span class="line">【lecture 10】————Model Attack(模型攻击)</span><br><span class="line">【lecture 11】————Domain Adaptaion(迁移学习/域适应/领域自适应)</span><br><span class="line">               |————解决“黑白yes而彩色no”的情况 </span><br><span class="line">【lecture 13】————Network Compression(网络/模型压缩)</span><br><span class="line">               |————如：BERT太大了 </span><br><span class="line">【lecture 14】————Life-long Learning(终身学习、Few-shot Learning)</span><br><span class="line">               |————天网 </span><br><span class="line">【lecture 15】————Meta Learning=Learn to Learn(元学习/小样本学习)</span><br><span class="line">               |————用非常少的数据学习 </span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">1、函数f是(类)神经网络(neural network)。</span><br><span class="line">2、函数任务——输入——输出：</span><br><span class="line">    (1)regression回归任务——向量(vector)——标量(scalar)；</span><br><span class="line">    (2)classification分类任务——矩阵(matrix：图像等)——类(class)；</span><br><span class="line">    (3)structured learning结构任务——序列(sequence：语音、文本等)——text文本、image图像；</span><br><span class="line">3、例如：第i讲的作业</span><br><span class="line">HomeWork1：COVID-19确诊率预测的输入是vector，输出是scalar；</span><br><span class="line">HomeWork2：Phoneme Classification(语音识别的简化版)的输入是vector，输出是class；</span><br><span class="line">HomeWork3：Image Classification的输入时matrix，输出是classification；</span><br><span class="line">HomeWork4：Speaker Classification的输入是sequence，输出是classification；</span><br><span class="line">HomeWork5：Machine Translation的输入是sequence，输出是text；</span><br><span class="line">HomeWork6：Anime Face Generation(动漫人脸生成)的输出是image；</span><br><span class="line">4、学习路线：</span><br><span class="line">【lecture 1-5】————supervised learning(监督学习-标注)</span><br><span class="line">               |————宝可梦或数码宝贝(pokemon or digimon)</span><br><span class="line">               |————training data</span><br><span class="line">               |————labels</span><br><span class="line">【lecture 7】————self-supervised learning(自监督学习-不用标注)</span><br><span class="line">               |————预训练Pre-train</span><br><span class="line">               |————基础任务：原图——变色图——翻转图对比判断</span><br><span class="line">               |————下流任务(Downstream Tasks)：宝可梦or数码宝贝、汽车or自行车、猫or狗、苹果or橘子</span><br><span class="line">               |————Pre-train Model(Foundation Model)和Downstream Tasks==OS和Application</span><br><span class="line">               |————常见的预训练模型有BERT，后来又有GPT等</span><br><span class="line">【lecture 6】————Generative Adversarial[ˌædvəˈseərɪəl] Network(生成对抗网络GAN)</span><br><span class="line">               |————Unsupervised abstractive summarization</span><br><span class="line">               |————Unsupervised translation</span><br><span class="line">               |————Unsupervised ASR(automatic speech recognition)</span><br><span class="line">【lecture 12】————Reinforcement[ˌri:ɪnˈfɔ:smənt] Learning(强化学习RL)</span><br><span class="line">               |————不好human label的时候，如下围棋等 </span><br><span class="line">               |————但是可以人为判断result好坏</span><br><span class="line">【lecture 8】————Anomaly[əˈnɑməli] Detection(异常检测)</span><br><span class="line">               |————可以回答&quot;I don&#x27;t know.&quot; </span><br><span class="line">【lecture 9】————Explainable AI</span><br><span class="line">               |————可以解释why </span><br><span class="line">【lecture 10】————Model Attack(模型攻击)</span><br><span class="line">【lecture 11】————Domain Adaptaion(迁移学习/域适应/领域自适应)</span><br><span class="line">               |————解决“黑白yes而彩色no”的情况 </span><br><span class="line">【lecture 13】————Network Compression(网络/模型压缩)</span><br><span class="line">               |————如：BERT太大了 </span><br><span class="line">【lecture 14】————Life-long Learning(终身学习、Few-shot Learning)</span><br><span class="line">               |————天网 </span><br><span class="line">【lecture 15】————Meta Learning=Learn to Learn(元学习/小样本学习)</span><br><span class="line">               |————用非常少的数据学习 </span><br></pre></td></tr></table></figure>
 
 <p><code>2023.11.2</code></p>
 <hr>
-<h3 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.基本概念"></a>2.基本概念</h3><p><code>2023.11.3</code></p>
+<h3 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.基本概念"></a>2.基本概念</h3><p>(1)我们常说的<code>model</code>就是带有<code>未知参数</code>的<code>函数</code></p>
+<p>(2)ML找出函数的Training三大步骤：Linear models</p>
+<ul>
+<li>未知参数——function with unknown parameters</li>
+</ul>
+<p>比如y&#x3D;wx+b的w和b就是unknown parameters：weight，bias；</p>
+<ul>
+<li>定义关于未知参数的损失函数——define loss from training data</li>
+</ul>
+<p>L(b,w)，Loss用于判断一组输入的好坏，可作误差曲面error surface；</p>
+<p>$L&#x3D;\frac{1}{N}Σ_{i&#x3D;1}^ne_i$ ，$e_i$计算方式有两种：一种是绝对误差MAE为$e&#x3D;|y’-y_0|$，一种是方差MSE为$e&#x3D;(y’-y_0)^2$。</p>
+<ul>
+<li>优化——optimization</li>
+</ul>
+<p>找到一组(b*,w*)使得L最小；</p>
+<p>gradient descent梯度下降法：</p>
+<p>        以线性模型Linear Model为例：</p>
+<p>        <code>先假设只有一个未知参数w，得到L关于w的曲线。随机指定一个初始值w0，根据曲线的微分和η(自设的参数learning rate，是超参数hyperparameter)来更新w。这里可能涉及极小值和最小值的概念，也就是说斜率为0停止更新w的时候，此时的w并不一定是使得L全局最小的，local minima和global minima，但这是一个假问题。</code></p>
+<p>        <code>推广到两个参数，随机指定初始值(w0,b0)，分别对w和b求L的微分，同样还要结合η来更新w和b。</code></p>
+<p>        但是Linear models有severe严重的局限性，model bias。我们需要更复杂sophisticated的函数、更灵活的模型。</p>
+<p>(3)更复杂的function(Sigmoid)</p>
+<ul>
+<li><p>复杂曲线都可以用一个常数c(constant)和足够多的分段折线线段近似化表示出来。分段折线可以使用一个sigmoid(S型)曲线近似表示，这条曲线为y&#x3D;c sigmoid(b+wx)。调整c，b，w就可以表示各种折线hard sigmoid。$y&#x3D;m+Σ_ic_i sigmoid(b_i+w_ix)$。</p>
+</li>
+<li><p>进一步扩展，有若干x，则$y&#x3D;m+Σ_ic_i sigmoid(b_i+Σ_jw_{ij}x_j)$。实际上，就是<strong>向量</strong>表示为y&#x3D;m+<strong>c</strong>$^T$sigmoid(<strong>b</strong>+<strong>wx</strong>)。</p>
+</li>
+<li><p><strong>对应复杂函数的ML</strong></p>
+</li>
+</ul>
+<p>    未知参数<strong>θ</strong>&#x3D;{m，<strong>c</strong>，<strong>b</strong>，<strong>w</strong>}；</p>
+<p>    损失函数L(<strong>θ</strong>)；</p>
+<p>    优化$θ^*$让L最小，还是那些步骤：随机选择一个$θ^0$作为初始值，求每个θ分量的微分组成<strong>g</strong>(gradient)&#x3D;▽L(<strong>θ</strong>)，然后结合η更新<strong>θ</strong>；</p>
+<ul>
+<li>关于Loss的计算</li>
+</ul>
+<p>原来作业为N，随机分为若干作业为B的batch。在每次更新上述<strong>θ</strong>(update)的时候，计算每次更新后的L每次均采用不同的一份batch(此过程也叫epoch[‘i:pok])，分别得到$L^1,L^2,L^3,…$。</p>
+<p>比如：N&#x3D;10000，B&#x3D;10，则共1000个batches。那也就是update有1000次，分别对应<strong>g</strong>(gradient)&#x3D;▽L$^i$(<strong>θ</strong>)，i&#x3D;1~1000；</p>
+<p>(4)复杂function(<strong>ReLU</strong>:rectified linear unit矫正的斜线单元)</p>
+<p>cmax(0,b+wx)；</p>
+<p>对应有$y&#x3D;m+Σ_ic_i max(b_i+Σ_jw_{ij}x_j)$；</p>
+<p>这里的max和sigmoid均为激活函数(activation function)；</p>
+<p><code>ReLU要优于sigmoid；</code></p>
+<p>(5)总结：</p>
+<p>学了ML寻找函数的三大步骤；</p>
+<p>学了几个函数&#x2F;模型：Linear modles——Sigmoid——ReLU；</p>
+<p>sigmoid和relu都是neuron(神经元)，多次优化就是neural network(神经网络)；每层优化是一个Hidden layer，多层就叫做Deep Learning；但是过多层会overfitting过拟合。</p>
+<p><code>2023.11.3</code></p>
 <hr>
 <h3 id="3-Colab"><a href="#3-Colab" class="headerlink" title="3.Colab"></a>3.Colab</h3><p><code>2023.11.</code></p>
 <hr>
