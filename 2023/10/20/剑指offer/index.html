@@ -18,8 +18,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/%E7%8A%B6%E6%80%81%E6%9C%BA.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/71b26c6d-a6d6-4ba0-8303-04b47d3b579e.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/6db30061-32ac-4ffc-9b9f-bb43e1f98ad7.png">
 <meta property="article:published_time" content="2023-10-20T09:49:59.456Z">
-<meta property="article:modified_time" content="2023-11-02T09:58:15.603Z">
+<meta property="article:modified_time" content="2023-11-03T15:35:03.518Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="剑指offer">
 <meta property="article:tag" content="大四上">
@@ -515,21 +516,24 @@
 <p><strong>我的解法：双重重叠循环遍历统计，O(n)。时间超限。但其实任一字符只要有2次就可以停止了。</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串中删除某个字符：str.erase(迭代器)删除迭代器单个元素，str.erase(pos,n)删除pos下标开始的n个字符</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">char</span> <span class="title">dismantlingAction</span><span class="params">(string arr)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;arr.<span class="built_in">length</span>();i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;arr.<span class="built_in">length</span>();j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j]==arr[i]) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    <span class="keyword">if</span>(count==<span class="number">2</span>)    <span class="keyword">break</span>;<span class="comment">//解决时间超限</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count==<span class="number">1</span>)    <span class="keyword">return</span> arr[i];</span><br><span class="line">            count=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="7-搜索与回溯"><a href="#7-搜索与回溯" class="headerlink" title="7.搜索与回溯"></a>7.搜索与回溯</h2><h4 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h4><p><strong>题目描述：</strong></p>
+<h2 id="7-搜索与回溯"><a href="#7-搜索与回溯" class="headerlink" title="7.搜索与回溯"></a>7.搜索与回溯</h2><h4 id="7-1彩灯装饰记录I"><a href="#7-1彩灯装饰记录I" class="headerlink" title="7.1彩灯装饰记录I"></a>7.1彩灯装饰记录I</h4><p><strong>题目描述：</strong></p>
+<p>从左到右遍历二叉树。</p>
+<p><strong>示例：</strong></p>
+<img title src="file:///D:/others/useful/Hexo/picture/6db30061-32ac-4ffc-9b9f-bb43e1f98ad7.png" alt="6db30061-32ac-4ffc-9b9f-bb43e1f98ad7" style="zoom:33%;">
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [8,17,21,18,null,null,6]</span><br><span class="line">输出：[8,17,21,18,6]</span><br></pre></td></tr></table></figure>
+
+<p><strong>我的解法：BFS</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="7-2彩灯装饰记录II"><a href="#7-2彩灯装饰记录II" class="headerlink" title="7.2彩灯装饰记录II"></a>7.2彩灯装饰记录II</h4><p><strong>题目描述：</strong></p>
 <p><strong>示例：</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>我的解法：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h4><p><strong>题目描述：</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>我的解法：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="7-3"><a href="#7-3" class="headerlink" title="7.3"></a>7.3</h4><p><strong>题目描述：</strong></p>
+<h4 id="7-3彩灯装饰记录III"><a href="#7-3彩灯装饰记录III" class="headerlink" title="7.3彩灯装饰记录III"></a>7.3彩灯装饰记录III</h4><p><strong>题目描述：</strong></p>
 <p><strong>示例：</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
