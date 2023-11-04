@@ -32,7 +32,7 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/95eaf79e-ab7b-4bb1-b940-d1544677a54a.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/1bb01655-71e5-49aa-8779-4a29fec8eb88.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-11-04T11:22:48.614Z">
+<meta property="article:modified_time" content="2023-11-04T14:12:20.291Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -350,11 +350,18 @@
 <p><code>GPU资源使用量受限，隔段时间会禁用：多开几个账号或购买colab pro</code></p>
 <h4 id="3-2-Kaggle"><a href="#3-2-Kaggle" class="headerlink" title="3.2 Kaggle"></a>3.2 Kaggle</h4><p><code>2023.11.4</code></p>
 <hr>
-<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Background"><a href="#4-1-Background" class="headerlink" title="4.1 Background"></a>4.1 Background</h4><p><strong>前提prerequisites</strong></p>
+<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Background"><a href="#4-1-Background" class="headerlink" title="4.1 Background"></a>4.1 Background</h4><p><strong>前提(prerequisites)</strong></p>
+<p>Python3语法知识、深度学习基础(李宏毅前几节课)、NumPy(一个py库)……</p>
 <p><strong>什么是pytorch</strong></p>
-<h4 id="4-2-Training-Testing"><a href="#4-2-Training-Testing" class="headerlink" title="4.2 Training &amp; Testing"></a>4.2 Training &amp; Testing</h4><p><strong>pytorch训练神经网络</strong></p>
-<p><strong>pytorch测试神经网络</strong></p>
-<h4 id="4-3-Dataset-Dataloader"><a href="#4-3-Dataset-Dataloader" class="headerlink" title="4.3 Dataset &amp; Dataloader"></a>4.3 Dataset &amp; Dataloader</h4><h4 id="4-4-Tensors"><a href="#4-4-Tensors" class="headerlink" title="4.4 Tensors"></a>4.4 Tensors</h4><h4 id="4-5-Torch-nn"><a href="#4-5-Torch-nn" class="headerlink" title="4.5 Torch.nn"></a>4.5 Torch.nn</h4><p><strong>模型</strong></p>
+<p>基于Python的机器学习框架；</p>
+<p>在GPU上高速计算高维矩阵&#x2F;向量，即Tensor(张量)，像NumPy；</p>
+<p>训练深度神经网络时进行自动微分(automatic differentiation)计算；</p>
+<h4 id="4-2-Training-Testing"><a href="#4-2-Training-Testing" class="headerlink" title="4.2 Training &amp; Testing"></a>4.2 Training &amp; Testing</h4><p>训练的三大步骤：定义神经网络—定义损失函数—优化算法</p>
+<p>整体（均包含load data）：训练&lt;—&gt;验证(validation)—&gt;测试（反复的训练和验证）</p>
+<h4 id="4-3-Dataset-Dataloader"><a href="#4-3-Dataset-Dataloader" class="headerlink" title="4.3 Dataset &amp; Dataloader"></a>4.3 Dataset &amp; Dataloader</h4><p>Load Data &#x3D; torch.utils.data.Dataset &amp; torch.utils.data.Dataloader</p>
+<p>Dataset</p>
+<p>Dataloader</p>
+<h4 id="4-4-Tensors"><a href="#4-4-Tensors" class="headerlink" title="4.4 Tensors"></a>4.4 Tensors</h4><h4 id="4-5-Torch-nn"><a href="#4-5-Torch-nn" class="headerlink" title="4.5 Torch.nn"></a>4.5 Torch.nn</h4><p><strong>模型</strong></p>
 <p><strong>损失函数</strong></p>
 <h4 id="4-6-Torch-optim"><a href="#4-6-Torch-optim" class="headerlink" title="4.6 Torch.optim"></a>4.6 Torch.optim</h4><p><strong>优化(optimization)</strong></p>
 <h4 id="4-7-Save-Load-models"><a href="#4-7-Save-Load-models" class="headerlink" title="4.7 Save&#x2F;Load models"></a>4.7 Save&#x2F;Load models</h4><p><code>2023.11.</code></p>
