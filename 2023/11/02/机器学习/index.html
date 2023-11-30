@@ -32,7 +32,7 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/95eaf79e-ab7b-4bb1-b940-d1544677a54a.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/1bb01655-71e5-49aa-8779-4a29fec8eb88.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-11-04T14:12:20.291Z">
+<meta property="article:modified_time" content="2023-11-30T11:05:16.362Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -234,7 +234,8 @@
 <p><code>2023.11.2</code></p>
 <hr>
 <h3 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.基本概念"></a>2.基本概念</h3><p>(1)我们常说的<code>model</code>就是带有<code>未知参数</code>的<code>函数</code></p>
-<p>(2)ML找出函数的Training三大步骤：Linear models</p>
+<p>(2)ML找出函数的Training三大步骤：</p>
+<p>以<strong>Linear models</strong>为例：</p>
 <ul>
 <li>未知参数——function with unknown parameters</li>
 </ul>
@@ -243,7 +244,7 @@
 <li>定义关于未知参数的损失函数——define loss from training data</li>
 </ul>
 <p>L(b,w)，Loss用于判断一组输入的好坏，可作误差曲面error surface；</p>
-<p>$L&#x3D;\frac{1}{N}Σ_{i&#x3D;1}^ne_i$ ，$e_i$计算方式有两种：一种是绝对误差MAE为$e&#x3D;|y’-y_0|$，一种是方差MSE为$e&#x3D;(y’-y_0)^2$。</p>
+<p>$L&#x3D;\frac{1}{N}Σ_{i&#x3D;1}^ne_i$ ，$e_i$计算方式有两种：一种是绝对误差<strong>MAE</strong>为$e&#x3D;|y’-y_0|$，一种是方差<strong>MSE</strong>为$e&#x3D;(y’-y_0)^2$。</p>
 <ul>
 <li>优化——optimization</li>
 </ul>
@@ -268,7 +269,7 @@
 <ul>
 <li>关于Loss的计算</li>
 </ul>
-<p>【注】原来作业为N，随机分为若干作业为B的batch。在每次更新上述<strong>θ</strong>(update)的时候，计算每次更新后的L每次均采用不同的一份batch(此过程也叫epoch[‘i:pok])，分别得到$L^1,L^2,L^3,…$。</p>
+<p>【注】原来作业为N，随机分为若干作业为 B [批量]的 batch [批样本]。在每次更新上述<strong>θ</strong>(update)的时候，计算每次更新后的 L 每次均采用不同的一份 batch (此过程也叫 epoch [训练样本] [‘i:pok])，分别得到$L^1,L^2,L^3,…$。</p>
 <p>比如：N&#x3D;10000，B&#x3D;10，则共1000个batches。那也就是update有1000次，分别对应<strong>g</strong>(gradient)&#x3D;▽L$^i$(<strong>θ</strong>)，i&#x3D;1~1000；</p>
 <p>(4)复杂function(<strong>ReLU</strong>:rectified linear unit矫正的斜线单元)</p>
 <p>cmax(0,b+wx)；</p>
@@ -282,7 +283,7 @@
 <p><code>2023.11.3</code></p>
 <hr>
 <h3 id="3-Google-Colab和Kaggle-Kernel"><a href="#3-Google-Colab和Kaggle-Kernel" class="headerlink" title="3.Google Colab和Kaggle Kernel"></a>3.Google Colab和Kaggle Kernel</h3><h4 id="3-1-Colab"><a href="#3-1-Colab" class="headerlink" title="3.1 Colab"></a>3.1 Colab</h4><h5 id="3-1-1概览"><a href="#3-1-1概览" class="headerlink" title="3.1.1概览"></a>3.1.1概览</h5><p>(1) google colab tutorial link:   <a target="_blank" rel="noopener" href="https://reurl.cc/Epg3M0">https://reurl.cc/Epg3M0</a>    或    <a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1lB_rx79_pqEY7JCCeKylq84PtMvnxhw3?usp=sharing#scrollTo=ca2CpPPUvO-h">Google Colab</a>   。</p>
-<p>(2) colab就是一个可以直接在浏览器上编写运行Python程序的平台，优点是0配置、便捷使用GPUs、快速分享。使用！还可以编写bash shell的Linux程序，(有点像jupyter notebook ？不过colab主要是可以白嫖谷歌的gpu)。</p>
+<p>(2) colab就是一个可以直接在浏览器上编写运行Python程序的平台，优点是0配置、便捷免费使用GPUs、快速分享。使用！还可以编写bash shell的Linux程序，(有点像jupyter notebook ？不过colab主要是可以白嫖谷歌的gpu)。</p>
 <p>(3) outline：</p>
 <p>getting start——changing runtime——executing code book——check GPU type——file manipulation——mounting Google drive——saving notebook——useful Linux commands——problems you may encounter</p>
 <h5 id="3-1-2安装和使用"><a href="#3-1-2安装和使用" class="headerlink" title="3.1.2安装和使用"></a>3.1.2安装和使用</h5><p>（1）Getting Start</p>
@@ -307,7 +308,7 @@
 <p>（4）Check GPU Type</p>
 <img src="file:///D:/others/useful/Hexo/picture/8e21a081-b387-4819-9ad2-6ba26e26a022.png" title alt="8e21a081-b387-4819-9ad2-6ba26e26a022" style="zoom:50%;">
 
-<p>（5）File Manipulation</p>
+<p>（5）File Manipulation [&#x2F;məˌnɪp.jəˈleɪ.ʃən&#x2F; 操纵]</p>
 <p><code>文件存储链接解释：</code></p>
 <img src="file:///D:/others/useful/Hexo/picture/47097749-8933-4295-ac72-e1514014e97d.png" title alt="47097749-8933-4295-ac72-e1514014e97d" style="zoom:67%;">
 
@@ -318,7 +319,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">List all the files under the working directory</span></span><br><span class="line">!ls</span><br></pre></td></tr></table></figure>
 
 <p><code>文件结构</code></p>
-<img title src="file:///D:/others/useful/Hexo/picture/f22d9ebb-27d3-4c43-b266-4b518f186ba3.png" alt="f22d9ebb-27d3-4c43-b266-4b518f186ba3" style="zoom:50%;">
+<img title src="file:///D:/others/useful/Hexo/picture/f22d9ebb-27d3-4c43-b266-4b518f186ba3.png" alt="f22d9ebb-27d3-4c43-b266-4b518f186ba3" style="zoom:67%;">
 
 <p><code>上传和下载</code></p>
 <img title src="file:///D:/others/useful/Hexo/picture/e33f67ed-7058-4535-a59b-8dd63509b9b1.png" alt="e33f67ed-7058-4535-a59b-8dd63509b9b1" style="zoom:67%;">
@@ -350,13 +351,13 @@
 <p><code>GPU资源使用量受限，隔段时间会禁用：多开几个账号或购买colab pro</code></p>
 <h4 id="3-2-Kaggle"><a href="#3-2-Kaggle" class="headerlink" title="3.2 Kaggle"></a>3.2 Kaggle</h4><p><code>2023.11.4</code></p>
 <hr>
-<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Background"><a href="#4-1-Background" class="headerlink" title="4.1 Background"></a>4.1 Background</h4><p><strong>前提(prerequisites)</strong></p>
+<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Background"><a href="#4-1-Background" class="headerlink" title="4.1 Background"></a>4.1 Background</h4><p><strong>前提(prerequisites  &#x2F;ˌpriːˈrek.wɪ.zɪt&#x2F; )</strong></p>
 <p>Python3语法知识、深度学习基础(李宏毅前几节课)、NumPy(一个py库)……</p>
 <p><strong>什么是pytorch</strong></p>
-<p>基于Python的机器学习框架；</p>
-<p>在GPU上高速计算高维矩阵&#x2F;向量，即Tensor(张量)，像NumPy；</p>
+<p>基于Python的机器学习框架，就是一个<strong>库</strong>，<strong>计算器</strong>，加快向量计算速度；</p>
+<p>在GPU上高速计算高维矩阵&#x2F;向量，即Tensor(张量)，像NumPy的多维数组；</p>
 <p>训练深度神经网络时进行自动微分(automatic differentiation)计算；</p>
-<h4 id="4-2-Training-Testing"><a href="#4-2-Training-Testing" class="headerlink" title="4.2 Training &amp; Testing"></a>4.2 Training &amp; Testing</h4><p>训练的三大步骤：定义神经网络—定义损失函数—优化算法</p>
+<h4 id="4-2-Training-Testing"><a href="#4-2-Training-Testing" class="headerlink" title="4.2 Training &amp; Testing"></a>4.2 Training &amp; Testing</h4><p>训练的三大步骤：定义神经网络(带未知参的函数)—定义损失函数—优化算法(寻找最小损失)</p>
 <p>整体（均包含load data）：训练&lt;—&gt;验证(validation)—&gt;测试（反复的训练和验证）</p>
 <h4 id="4-3-Dataset-Dataloader"><a href="#4-3-Dataset-Dataloader" class="headerlink" title="4.3 Dataset &amp; Dataloader"></a>4.3 Dataset &amp; Dataloader</h4><p>Load Data &#x3D; torch.utils.data.Dataset &amp; torch.utils.data.Dataloader</p>
 <p>Dataset</p>
