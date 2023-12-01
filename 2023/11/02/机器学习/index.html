@@ -31,8 +31,10 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/46a2b85c-16c4-4545-85f3-046d70553d28.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/95eaf79e-ab7b-4bb1-b940-d1544677a54a.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/1bb01655-71e5-49aa-8779-4a29fec8eb88.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/7ffdc9b9-2eff-4f72-b4d6-04da631c93a5.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/8343a713-37a9-4757-a509-a3ef1e18a332.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-11-30T11:40:43.464Z">
+<meta property="article:modified_time" content="2023-12-01T16:30:25.779Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -269,7 +271,7 @@
 <ul>
 <li>关于Loss的计算</li>
 </ul>
-<p>【注】原来作业为N，随机分为若干作业为 B [批量]的 batch [批样本]。在每次更新上述<strong>θ</strong>(update)的时候，计算每次更新后的 L 每次均采用不同的一份 batch (此过程也叫 epoch [训练样本] [‘i:pok])，分别得到$L^1,L^2,L^3,…$。</p>
+<p>【注】原来作业为N，随机分为若干作业为 B 的 batch。在每次更新上述<strong>θ</strong>(update)的时候，计算每次更新后的 L 每次均采用不同的一份 batch (此过程也叫 epoch [‘i:pok])，分别得到$L^1,L^2,L^3,…$。</p>
 <p>比如：N&#x3D;10000，B&#x3D;10，则共1000个batches。那也就是update有1000次，分别对应<strong>g</strong>(gradient)&#x3D;▽L$^i$(<strong>θ</strong>)，i&#x3D;1~1000；</p>
 <p>(4)复杂function(<strong>ReLU</strong>:rectified linear unit矫正的斜线单元)</p>
 <p>cmax(0,b+wx)；</p>
@@ -351,26 +353,123 @@
 <p><code>GPU资源使用量受限，隔段时间会禁用：多开几个账号或购买colab pro</code></p>
 <h4 id="3-2-Kaggle"><a href="#3-2-Kaggle" class="headerlink" title="3.2 Kaggle"></a>3.2 Kaggle</h4><p><code>2023.11.4</code></p>
 <hr>
-<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Background"><a href="#4-1-Background" class="headerlink" title="4.1 Background"></a>4.1 Background</h4><p><strong>前提(prerequisites  &#x2F;ˌpriːˈrek.wɪ.zɪt&#x2F; )</strong></p>
+<h3 id="4-Pytorch"><a href="#4-Pytorch" class="headerlink" title="4.Pytorch"></a>4.Pytorch</h3><h4 id="4-1-Pytorch理论"><a href="#4-1-Pytorch理论" class="headerlink" title="4.1 Pytorch理论"></a>4.1 Pytorch理论</h4><h5 id="4-1-1-Background"><a href="#4-1-1-Background" class="headerlink" title="4.1.1 Background"></a>4.1.1 Background</h5><p><strong>前提(prerequisites  &#x2F;ˌpriːˈrek.wɪ.zɪt&#x2F; )</strong></p>
 <p>Python3语法知识、深度学习基础(李宏毅前几节课)、NumPy(一个py库)……</p>
 <p><strong>什么是pytorch</strong></p>
 <p>基于Python的机器学习框架，就是一个<strong>库</strong>，<strong>计算器</strong>，加快向量计算速度；</p>
 <p>在GPU上高速计算高维矩阵&#x2F;向量，即Tensor(张量)，像NumPy的多维数组；</p>
 <p>训练深度神经网络时进行自动微分(automatic differentiation)计算；</p>
-<h4 id="4-2-Training-Testing"><a href="#4-2-Training-Testing" class="headerlink" title="4.2 Training &amp; Testing"></a>4.2 Training &amp; Testing</h4><p>训练的三大步骤：定义神经网络(带未知参的函数)—定义损失函数—优化算法(寻找最小损失)</p>
+<h5 id="4-1-2-Training-Testing"><a href="#4-1-2-Training-Testing" class="headerlink" title="4.1.2 Training &amp; Testing"></a>4.1.2 Training &amp; Testing</h5><p>训练的三大步骤：定义神经网络(带未知参的函数)—定义损失函数—优化算法(寻找最小损失)</p>
 <p>整体（均包含load data）：训练&lt;—&gt;验证(validation)—&gt;测试（反复的训练和验证）</p>
-<h4 id="4-3-Dataset-Dataloader"><a href="#4-3-Dataset-Dataloader" class="headerlink" title="4.3 Dataset &amp; Dataloader"></a>4.3 Dataset &amp; Dataloader</h4><p>(1) Load Data &#x3D; torch.utils.data.Dataset &amp; torch.utils.data.Dataloader   <code>utils是Python的一个模块</code></p>
+<h5 id="4-1-3-Dataset-Dataloader"><a href="#4-1-3-Dataset-Dataloader" class="headerlink" title="4.1.3 Dataset &amp; Dataloader"></a>4.1.3 Dataset &amp; Dataloader</h5><p>(1) Load Data &#x3D; torch.utils.data.Dataset &amp; torch.utils.data.Dataloader   <code>utils是Python的一个模块</code></p>
 <p>(2) Dataset：数据样本+期望值</p>
 <p>dataset&#x3D;MyDataset(file)</p>
 <p>将数据一笔一笔读进来，打包进MyDataset类</p>
 <p>(3) Dataloader：分组成批</p>
 <p>dataloader&#x3D;DataLoader(dataset, batch_size, shuffle&#x3D;True)，training&#x3D;True，testing&#x3D;False</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[1]Shuffle在ml里面的意思是打乱数据集，愿意是“洗牌，移动。”</span><br><span class="line">[2]Pytorch里面squeeze()和unsqueeze()里面参数的含义和用法</span><br><span class="line">[3]Datatype dtype tensor数据类型</span><br><span class="line">[4]训练device用.to(&#x27;cuda&#x27;)或用.to(&#x27;cpu&#x27;)</span><br><span class="line">[5]定义模型神经网络(层)，定义损失函数，优化参数训练＋验证＋测试整体联系在一起</span><br><span class="line">[6]训练:读入合并数据，定义调用模型，调用损失函数，调用优化函数。</span><br><span class="line">[7]Epoch时期，batch批次分量，iterate重复</span><br></pre></td></tr></table></figure>
+<p>(4) 具体用法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset, DataLoader</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDataset</span>(<span class="title class_ inherited__">file</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self,file</span>):</span><br><span class="line">        self.data=...  <span class="comment">#读数据，预处理</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_getitem</span>(<span class="params">self,index</span>):</span><br><span class="line">        <span class="keyword">return</span> self.data[index]  <span class="comment">#一次返回一笔</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_len_</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.data)  <span class="comment">#返回数据集长度</span></span><br><span class="line"></span><br><span class="line">dataloader=DataLoader(dataset, batch_size, shuffle=<span class="literal">True</span>):</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-4-Tensors"><a href="#4-4-Tensors" class="headerlink" title="4.4 Tensors"></a>4.4 Tensors</h4><h4 id="4-5-Torch-nn"><a href="#4-5-Torch-nn" class="headerlink" title="4.5 Torch.nn"></a>4.5 Torch.nn</h4><p><strong>模型</strong></p>
+<p>(5) 注释</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]Shuffle在ml里面的意思是打乱数据集，愿意是“洗牌，移动。”</span><br><span class="line">[2]epoch时期，batch批次分量，iterate重复。</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-1-4-Tensors"><a href="#4-1-4-Tensors" class="headerlink" title="4.1.4 Tensors"></a>4.1.4 Tensors</h5><p>(1)what？</p>
+<p>张量、高维向量、阵列</p>
+<p>(2)函数</p>
+<ul>
+<li>查看维度dim大小</li>
+</ul>
+<p><code>torch.shape</code></p>
+<p><code>pytorch的dim=numpy的axis；</code></p>
+<ul>
+<li>创建tensors</li>
+</ul>
+<p><code>torch.tensor([[1,-1],[-1,1]])以list的方式直接从数据创建；</code></p>
+<p><code>torch.from_numpy(np.array([[1,1],[1,1]]))以numpy数组方式从数据直接创建；</code></p>
+<p><code>torch.zeros([2,2])创建一个全为0的2×2的2维矩阵；</code></p>
+<p><code>torch.ones([1,2,5])创建一个全为1的1×2×5的3维矩阵；</code></p>
+<p><strong>还有就提一下，DIP、ML里面涉及到的好多数组的值基本都是浮点型类型。</strong></p>
+<p><code>y=x.sum()加法；</code></p>
+<p><code>y=x.mean()减法；</code></p>
+<p><code>y=x.pow(2)幂运算；</code></p>
+<p><code>x=x.transpose(0,1)互换第0维和第1维的维度；</code></p>
+<p><code>x=x.squeeze(dim)消除掉维度为1的第dim维；</code></p>
+<p><code>x=x.unsqueeze(dim)在第dim维添加维度为1的一层；</code></p>
+<p><code>w=torch.cat([x,y,z],dim=1)沿着第1维合并x，y，z这三个阵列，前提是可以合并；</code></p>
+<p>在pytorch中好多属性方法的调用都类似于numpy。</p>
+<p>(3)数据类型</p>
+<p><img src="file:///D:/others/useful/Hexo/picture/7ffdc9b9-2eff-4f72-b4d6-04da631c93a5.png" alt="7ffdc9b9-2eff-4f72-b4d6-04da631c93a5"></p>
+<p>(4)模型的runtime类型or训练device</p>
+<p>用.to(‘cuda’)切换GPU类型</p>
+<p>或用.to(‘cpu’)切换为CPU类型，默认是CPU。</p>
+<p>用torch.cuda.is_available()可以检测目前设备有没有可用的GPU，若有多个GPU还需得做出选择用哪一个。</p>
+<p>(5)梯度计算</p>
+<p>x&#x3D;torch.tensor([[1,-1],[0,1]], <strong>requires_grad&#x3D;True</strong>)</p>
+<p>z&#x3D;f(x);</p>
+<p>z.backward();&#x2F;&#x2F;反向传播求导，也就是最终的梯度结果</p>
+<p>z.grad检查最终结果的梯度；</p>
+<p><code>2023.11.30</code></p>
+<hr>
+<h5 id="4-1-5-Torch-nn"><a href="#4-1-5-Torch-nn" class="headerlink" title="4.1.5 Torch.nn"></a>4.1.5 Torch.nn</h5><p><strong>模型</strong></p>
+<p>(1) Linear Layer</p>
+<p>nn.Linear(in_features, out_features)，比如说给出输入维度和输出维度，输入的维度的最后一个值只要为in_feature，经过nn.Linear(in_features, out_features)运算后就能得出最后一个维度为out_features的输出维度。</p>
+<p>Linear Layer实际上就是前面讲过的<strong>y</strong>&#x3D;<strong>wx</strong>+<strong>b</strong>。</p>
+<p>(2)此外还有nn.Sigmoid()和nn.ReLU()。</p>
+<p>(3)实际用法：定义模型or定义神经网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self</span>): <span class="comment">#初始化模型或layer(神经网络基本单元-层)</span></span><br><span class="line">        <span class="built_in">super</span>(MyModel, self)._init_()</span><br><span class="line">        self.net=nn.Sequential( <span class="comment">#所有的神经网络NN层layer序列</span></span><br><span class="line">            nn.Linear(<span class="number">10</span>, <span class="number">32</span>),</span><br><span class="line">            nn.Sigmoid(),</span><br><span class="line">            nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_forward</span>(<span class="params">self, x</span>): <span class="comment">#计算神经网络的输出结果</span></span><br><span class="line">        <span class="keyword">return</span> self.net(x)</span><br></pre></td></tr></table></figure>
+
+<p>上面是将三层layer封装为一个nn的方式，也可分层定义：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self</span>): <span class="comment">#初始化模型或layer(神经网络基本单元-层)</span></span><br><span class="line">        <span class="built_in">super</span>(MyModel, self)._init_()</span><br><span class="line">        self.layer1=nn.Linear(<span class="number">10</span>, <span class="number">32</span>)</span><br><span class="line">        self.layer2=nn.Sigmoid(),</span><br><span class="line">        self.layer3=nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_forward</span>(<span class="params">self, x</span>): <span class="comment">#计算神经网络的输出结果</span></span><br><span class="line">        out=self.layer1(x)</span><br><span class="line">        out=self.layer2(out)</span><br><span class="line">        out=self.layer3(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+
 <p><strong>损失函数</strong></p>
-<h4 id="4-6-Torch-optim"><a href="#4-6-Torch-optim" class="headerlink" title="4.6 Torch.optim"></a>4.6 Torch.optim</h4><p><strong>优化(optimization)</strong></p>
-<h4 id="4-7-Save-Load-models"><a href="#4-7-Save-Load-models" class="headerlink" title="4.7 Save&#x2F;Load models"></a>4.7 Save&#x2F;Load models</h4><p><code>2023.11.30</code></p>
+<p>(1)上图：</p>
+<p><img src="file:///D:/others/useful/Hexo/picture/8343a713-37a9-4757-a509-a3ef1e18a332.png" alt="8343a713-37a9-4757-a509-a3ef1e18a332"></p>
+<p>(2)损失函数</p>
+<ul>
+<li>误差：</li>
+</ul>
+<p>    criterion&#x3D;nn.MSELoss() #方差误差</p>
+<p>    criterion&#x3D;nn.CrossEntropyLoss()</p>
+<ul>
+<li>损失：</li>
+</ul>
+<p>    loss&#x3D;criterion(model_output, expexted_value)</p>
+<ul>
+<li>我们是希望loss越小越好</li>
+</ul>
+<h5 id="4-1-6-Torch-optim"><a href="#4-1-6-Torch-optim" class="headerlink" title="4.1.6 Torch.optim"></a>4.1.6 Torch.optim</h5><p><strong>优化(optimization)</strong></p>
+<ul>
+<li><p>pytorch里面已经定义好了许多优化算法：比如–基于梯度的</p>
+</li>
+<li><p>Stochatic梯度下降法SGD：torch.optim.SGD(model.parameters(), lr, momentum&#x3D;0)</p>
+</li>
+<li><p>分为三步：将前面梯度归零optimizer.zero_grad()+计算梯度loss.backward()+调整模型参数optimizer.step()</p>
+</li>
+</ul>
+<h5 id="4-1-7整体流程：训练-3-验证-测试"><a href="#4-1-7整体流程：训练-3-验证-测试" class="headerlink" title="4.1.7整体流程：训练(3)+验证+测试"></a>4.1.7整体流程：训练(3)+验证+测试</h5><p>训练：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load data</span></span><br><span class="line">dataset=MyDataset(file)</span><br><span class="line">tr_set=DataLoader(dataset, batch_size常数, shuffle=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 定义模型/nn和训练的设备类型：首先在MyModel里定义自己的模型，然后调用.to()切换GPU/CPU</span></span><br><span class="line">model=MyModel().to(cuda或cpu)</span><br><span class="line"><span class="comment"># 定义损失函数</span></span><br><span class="line">criterion=nn.MSELoss()</span><br><span class="line"><span class="comment"># 优化</span></span><br><span class="line">optimizer=torch.optim.SGD(model.parameters(), <span class="number">0.1</span>, …)  <span class="comment"># 定义优化器</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(n_epochs):</span><br><span class="line">    model.train()  <span class="comment"># 将模型设置为训练模式下</span></span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> tr_set:  <span class="comment">#对于dataloader的每一对数据：样本x——期望值y</span></span><br><span class="line">        optimizer.zero_grad()  <span class="comment"># 将之前计算的梯度先清零</span></span><br><span class="line">        x, y =x.to(device), y.to(device)  <span class="comment"># 将数据放入device</span></span><br><span class="line">        pred=model(x)  <span class="comment">#临时结果</span></span><br><span class="line">        loss=criterion(pred, y)  <span class="comment">#计算损失</span></span><br><span class="line">        loss.backward()  <span class="comment"># 计算梯度：反向传播求导</span></span><br><span class="line">        optimizer.step()  <span class="comment"># 调整模型参数</span></span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">eval</span>()  <span class="comment"># 将模型设置为测试模式下</span></span><br><span class="line">total_loss=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> x, y <span class="keyword">in</span> dv_set:  <span class="comment"># 对于每份测试数据集</span></span><br><span class="line">    x, y = x.to(device), y.to(device)  <span class="comment"># 将数据移到gpu或cpu</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():  <span class="comment"># 停止梯度计算</span></span><br><span class="line">        pred=model(x)</span><br><span class="line">        loss=criterion(pred, y)</span><br><span class="line">    total_loss+=loss.cpu().item()+<span class="built_in">len</span>(x)  <span class="comment"># 累加误差，这里len相当于前面提过的μ?</span></span><br><span class="line">    avg_loss=total_loss/<span class="built_in">len</span>(dv_set.dataset)  <span class="comment"># 平均损失</span></span><br></pre></td></tr></table></figure>
+
+<p>实际测试：由于不知道输出的预测结果是什么样子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">eval</span>()</span><br><span class="line">preds=[]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> tt_set:</span><br><span class="line">    x=x.to(device)</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        pred=model(x)</span><br><span class="line">        preds.append(pred.cpu())  <span class="comment"># 拼接预测结果为列表</span></span><br></pre></td></tr></table></figure>
+
+<p>为什么关掉grad：测试不需要优化模型，所以不需要计算grad优化参数。还有就是再计算grad会对模型产生影响。</p>
+<p>为什么model.eval()调整测试模式：改变原本某些模型单元的功能。</p>
+<h5 id="4-1-8-Save-Load-models-存-读档"><a href="#4-1-8-Save-Load-models-存-读档" class="headerlink" title="4.1.8 Save&#x2F;Load models 存&#x2F;读档"></a>4.1.8 Save&#x2F;Load models 存&#x2F;读档</h5><p>你训练完、验证完、测试完的模型如何保存下来和使用呢？</p>
+<ul>
+<li>保存</li>
+</ul>
+<p>torch.save(model.state_dict(), path)</p>
+<ul>
+<li>调用</li>
+</ul>
+<p>ckpt&#x3D;torch.load(path)</p>
+<p>model.load_state_dict(ckpt)</p>
+<p><code>2023.12.01</code></p>
+<hr>
+<h4 id="4-2-Pytorch使用"><a href="#4-2-Pytorch使用" class="headerlink" title="4.2 Pytorch使用"></a>4.2 Pytorch使用</h4><p><code>2023.12.02</code></p>
 <hr>
 <h3 id="5-选修To-Learn-More"><a href="#5-选修To-Learn-More" class="headerlink" title="5.选修To Learn More"></a>5.选修To Learn More</h3><h4 id="5-1深度学习"><a href="#5-1深度学习" class="headerlink" title="5.1深度学习"></a>5.1深度学习</h4><h4 id="5-2-反向传播"><a href="#5-2-反向传播" class="headerlink" title="5.2 反向传播"></a>5.2 反向传播</h4><h4 id="5-3预测神奇宝贝"><a href="#5-3预测神奇宝贝" class="headerlink" title="5.3预测神奇宝贝"></a>5.3预测神奇宝贝</h4><h4 id="5-4逻辑回归"><a href="#5-4逻辑回归" class="headerlink" title="5.4逻辑回归"></a>5.4逻辑回归</h4><p><code>2023.11.</code></p>
 <hr>
