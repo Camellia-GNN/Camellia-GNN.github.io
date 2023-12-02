@@ -34,7 +34,7 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/7ffdc9b9-2eff-4f72-b4d6-04da631c93a5.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/8343a713-37a9-4757-a509-a3ef1e18a332.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-12-01T16:30:25.779Z">
+<meta property="article:modified_time" content="2023-12-02T10:45:43.399Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -419,7 +419,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self</span>): <span class="comment">#初始化模型或layer(神经网络基本单元-层)</span></span><br><span class="line">        <span class="built_in">super</span>(MyModel, self)._init_()</span><br><span class="line">        self.net=nn.Sequential( <span class="comment">#所有的神经网络NN层layer序列</span></span><br><span class="line">            nn.Linear(<span class="number">10</span>, <span class="number">32</span>),</span><br><span class="line">            nn.Sigmoid(),</span><br><span class="line">            nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_forward</span>(<span class="params">self, x</span>): <span class="comment">#计算神经网络的输出结果</span></span><br><span class="line">        <span class="keyword">return</span> self.net(x)</span><br></pre></td></tr></table></figure>
 
 <p>上面是将三层layer封装为一个nn的方式，也可分层定义：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self</span>): <span class="comment">#初始化模型或layer(神经网络基本单元-层)</span></span><br><span class="line">        <span class="built_in">super</span>(MyModel, self)._init_()</span><br><span class="line">        self.layer1=nn.Linear(<span class="number">10</span>, <span class="number">32</span>)</span><br><span class="line">        self.layer2=nn.Sigmoid(),</span><br><span class="line">        self.layer3=nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_forward</span>(<span class="params">self, x</span>): <span class="comment">#计算神经网络的输出结果</span></span><br><span class="line">        out=self.layer1(x)</span><br><span class="line">        out=self.layer2(out)</span><br><span class="line">        out=self.layer3(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyModel</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_init_</span>(<span class="params">self</span>): <span class="comment">#初始化模型或layer(神经网络基本单元-层)</span></span><br><span class="line">        <span class="built_in">super</span>(MyModel, self)._init_()</span><br><span class="line">        self.layer1=nn.Linear(<span class="number">10</span>, <span class="number">32</span>)</span><br><span class="line">        self.layer2=nn.Sigmoid(),</span><br><span class="line">        self.layer3=nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_forward</span>(<span class="params">self, x</span>): <span class="comment">#计算神经网络的输出结果</span></span><br><span class="line">        out=self.layer1(x)</span><br><span class="line">        out=self.layer2(out)</span><br><span class="line">        out=self.layer3(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
 
 <p><strong>损失函数</strong></p>
 <p>(1)上图：</p>
@@ -461,15 +461,42 @@
 <ul>
 <li>保存</li>
 </ul>
-<p>torch.save(model.state_dict(), path)</p>
+<p>保存整个模型：torch.save(model, path)</p>
+<p>只保存训练好的权重：torch.save(model.state_dict(), path)</p>
 <ul>
 <li>调用</li>
 </ul>
 <p>ckpt&#x3D;torch.load(path)</p>
 <p>model.load_state_dict(ckpt)</p>
-<p><code>2023.12.01</code></p>
+<p><code>2023.12.01 hexo g -d</code></p>
 <hr>
-<h4 id="4-2-Pytorch使用"><a href="#4-2-Pytorch使用" class="headerlink" title="4.2 Pytorch使用"></a>4.2 Pytorch使用</h4><p><code>2023.12.02</code></p>
+<h4 id="4-2-Pytorch应用"><a href="#4-2-Pytorch应用" class="headerlink" title="4.2 Pytorch应用"></a>4.2 Pytorch应用</h4><h5 id="4-2-1新冠病毒阳性案例预测"><a href="#4-2-1新冠病毒阳性案例预测" class="headerlink" title="4.2.1新冠病毒阳性案例预测"></a>4.2.1新冠病毒阳性案例预测</h5><p><strong>(1)前言</strong></p>
+<ul>
+<li>题目描述</li>
+</ul>
+<p>给出美国某些州的前5天的阳性病例的调查结果，预测出第5天的阳性病例情况。</p>
+<ul>
+<li>数据说明</li>
+</ul>
+<p>.csv文件(一种逗号分隔的纯文本数据，一行是数据表一行，方便录入表格或数据库)。</p>
+<p>本案例的数据文件的每一行代表一个样本，每一行包含118个特征，分别是样本id、37个州、(下分)5天里各16个features(可能是一天里采集16个cases的情况)。</p>
+<p>每行的最后一个feature是label。</p>
+<p><strong>(2)正式流程</strong></p>
+<ul>
+<li><p>加载数据&#x2F;预处理1min36s</p>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<h5 id="4-2-2"><a href="#4-2-2" class="headerlink" title="4.2.2"></a>4.2.2</h5><h5 id="4-2-3"><a href="#4-2-3" class="headerlink" title="4.2.3"></a>4.2.3</h5><h5 id="4-2-4"><a href="#4-2-4" class="headerlink" title="4.2.4"></a>4.2.4</h5><h5 id="4-2-5"><a href="#4-2-5" class="headerlink" title="4.2.5"></a>4.2.5</h5><h5 id="4-2-6"><a href="#4-2-6" class="headerlink" title="4.2.6"></a>4.2.6</h5><h5 id="4-2-7"><a href="#4-2-7" class="headerlink" title="4.2.7"></a>4.2.7</h5><h5 id="4-2-8"><a href="#4-2-8" class="headerlink" title="4.2.8"></a>4.2.8</h5><p><code>2023.12.02</code></p>
 <hr>
 <h3 id="5-选修To-Learn-More"><a href="#5-选修To-Learn-More" class="headerlink" title="5.选修To Learn More"></a>5.选修To Learn More</h3><h4 id="5-1深度学习"><a href="#5-1深度学习" class="headerlink" title="5.1深度学习"></a>5.1深度学习</h4><h4 id="5-2-反向传播"><a href="#5-2-反向传播" class="headerlink" title="5.2 反向传播"></a>5.2 反向传播</h4><h4 id="5-3预测神奇宝贝"><a href="#5-3预测神奇宝贝" class="headerlink" title="5.3预测神奇宝贝"></a>5.3预测神奇宝贝</h4><h4 id="5-4逻辑回归"><a href="#5-4逻辑回归" class="headerlink" title="5.4逻辑回归"></a>5.4逻辑回归</h4><p><code>2023.11.</code></p>
 <hr>
