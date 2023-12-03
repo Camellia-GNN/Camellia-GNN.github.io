@@ -36,9 +36,10 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/583a78a1-1773-49c8-9608-5ed5d72c1746.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/b00de18e-ee4e-445d-9f7c-e449851e54ed.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/84506adb-b1e1-45d6-a6ab-f0a824a58a9f.png">
-<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/b24b17e1-3fd5-44ba-8eb6-cc1decfa7b05.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/a094532a-f8af-4de5-8348-e633899e6305.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/d23c515e-3f12-4946-a3f3-ad45b774d4a1.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-12-03T16:49:24.882Z">
+<meta property="article:modified_time" content="2023-12-03T17:09:43.511Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -600,17 +601,19 @@
 <p>前传递计算；</p>
 <p>计算的是：为权重参数w计算偏微分$\frac{∂z}{∂w}$，计算结果应该是对应w的输入，方向是从前往后。</p>
 <ul>
-<li>Backforward Pass：$a&#x3D;h(z)$</li>
+<li>Backforward Pass：$a&#x3D;h(z)$。<mark>感觉这里理解的还不透彻。</mark></li>
 </ul>
 <img src="file:///D:/others/useful/Hexo/picture/84506adb-b1e1-45d6-a6ab-f0a824a58a9f.png" title alt="84506adb-b1e1-45d6-a6ab-f0a824a58a9f" style="zoom:50%;">
 
 <p>后传递计算；</p>
 <p>计算的是：为激活函数(model&#x2F;nn&#x2F;function)的输入z计算偏微分$\frac{∂C}{∂z}$，由于要全部求出C才能计算，所以方向从后往前。</p>
-<p>至于$\frac{∂C}{∂a}&#x3D;h’(z)[w_3\frac{∂C}{∂z’}+w_4\frac{∂C}{∂z’’}]$是怎么得到的：已知$a&#x3D;h(z)$，所以$\frac{∂C}{∂z}&#x3D;\frac{∂C}{∂a}\frac{∂a}{∂z}$，而$\frac{∂a}{∂z}$就是$h’(z)$，且z已经在FP计算出来，所以$h’(z)$是常数，所以$\frac{∂C}{∂z}&#x3D;h’(z)\frac{∂C}{∂a}$。已知z是逐层梯度计算微分的，z也是关于a的函数，所以z’和z’’都是关于a的函数，且有图可知w3&#x3D;$\frac{∂z’}{∂a}$，w4&#x3D;$\frac{∂z’’}{∂a}$。$\frac{∂C}{∂a}&#x3D;\frac{∂C}{∂z’}\frac{∂z’}{∂a}+\frac{∂C}{∂z’’}\frac{∂z’’}{∂a}$，所以可得$\frac{∂C}{∂a}&#x3D;h’(z)[w_3\frac{∂C}{∂z’}+w_4\frac{∂C}{∂z’’}]$。</p>
-<p>也就是</p>
-<img src="file:///D:/others/useful/Hexo/picture/b24b17e1-3fd5-44ba-8eb6-cc1decfa7b05.png" title alt="b24b17e1-3fd5-44ba-8eb6-cc1decfa7b05" style="zoom:50%;">
+<p>至于$\frac{∂C}{∂a}&#x3D;h’(z)[w_3\frac{∂C}{∂z’}+w_4\frac{∂C}{∂z’’}]$是怎么得到的：已知$a&#x3D;h(z)$，所以$\frac{∂C}{∂z}&#x3D;\frac{∂C}{∂a}\frac{∂a}{∂z}$，而$\frac{∂a}{∂z}$就是$h’(z)$，且z已经在FP计算出来，所以$h’(z)$是常数，所以$\frac{∂C}{∂z}&#x3D;h’(z)\frac{∂C}{∂a}$。已知z是逐层梯度计算微分的，z也是关于a的函数，所以z’和z’’都是关于a的函数，且有图可知w3&#x3D;$\frac{∂z’}{∂a}$，w4&#x3D;$\frac{∂z’’}{∂a}$。$\frac{∂C}{∂a}&#x3D;\frac{∂C}{∂z’}\frac{∂z’}{∂a}+\frac{∂C}{∂z’’}\frac{∂z’’}{∂a}$，由于是从后往前的，而从前往后的时候正好$\frac{∂C}{∂z’}和\frac{∂C}{∂z’’}$都是对应z和z’输出的，所以可得$\frac{∂C}{∂a}&#x3D;h’(z)[w_3\frac{∂C}{∂z’}+w_4\frac{∂C}{∂z’’}]$。</p>
+<p>也就是如下图：sigmoid就是C对z的第n次∂计算结果，也就是最后输出的y。所以有a&#x3D;∂，倒过来</p>
+<img title src="file:///D:/others/useful/Hexo/picture/a094532a-f8af-4de5-8348-e633899e6305.png" alt="a094532a-f8af-4de5-8348-e633899e6305" style="zoom:100%;">
 
 <p>（3）最终GD结果</p>
+<img title src="file:///D:/others/useful/Hexo/picture/d23c515e-3f12-4946-a3f3-ad45b774d4a1.png" alt="d23c515e-3f12-4946-a3f3-ad45b774d4a1" style="zoom:67%;">
+
 <p>$\frac{∂C}{∂w}&#x3D;\frac{∂C}{∂z}\frac{∂z}{∂w}$，也就是GD&#x3D;FP*BP。</p>
 <p><code>2023.12.03</code></p>
 <hr>
