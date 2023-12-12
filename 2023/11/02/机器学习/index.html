@@ -40,8 +40,9 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/d23c515e-3f12-4946-a3f3-ad45b774d4a1.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/5fa2f4f9-b035-4170-928f-fd297a58a1ea.png">
 <meta property="og:image" content="http://gnn.github.io/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/others/useful/Hexo/picture/982a2a2c-b95f-407b-bda4-ec6c6870b291.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/846ce86a-6390-414b-b2e1-3210d46fcddd.png">
 <meta property="article:published_time" content="2023-11-02T09:45:50.007Z">
-<meta property="article:modified_time" content="2023-12-05T13:24:08.318Z">
+<meta property="article:modified_time" content="2023-12-12T05:55:27.916Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="大四上">
@@ -649,7 +650,8 @@
 <li>K折交叉验证</li>
 </ul>
 <p>就是分为K分的LOOCV，一般K取值5或10，K越大bias越小，但是variance越大。</p>
-<p><strong>5.3.5线性回归python实战</strong>-课程没有</p>
+<p><strong>5.3.5线性回归python实战</strong></p>
+<p><strong>(1)numpy</strong></p>
 <ul>
 <li><p>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339412955">李宏毅机器学习课程笔记-2.5线性回归Python实战 - 知乎 (zhihu.com)</a></p>
 </li>
@@ -695,12 +697,37 @@
 <p>[13]np.dot(x, w)是矩阵乘法，执行的是线性回归y&#x3D;wx+b运算，得到的是以当前权重w，偏置b参数预测的结果。</p>
 <p>[14]adagrad可以看做是调整参数更改速率的，累加梯度的平方和。</p>
 <p>[15]<strong>是python里面的指数运算符，</strong>2就是平方的意思。</p>
-<h4 id="5-4分类模型classification"><a href="#5-4分类模型classification" class="headerlink" title="5.4分类模型classification"></a>5.4分类模型classification</h4><p>5.4.1分类模型简介及与回归的区别</p>
-<ul>
+<p>(2)pytorch</p>
+<h4 id="5-4分类模型classification"><a href="#5-4分类模型classification" class="headerlink" title="5.4分类模型classification"></a>5.4分类模型classification</h4><h5 id="5-4-1分类模型简介及与回归的区别"><a href="#5-4-1分类模型简介及与回归的区别" class="headerlink" title="5.4.1分类模型简介及与回归的区别"></a>5.4.1分类模型简介及与回归的区别</h5><ul>
 <li>应用</li>
 </ul>
 <p>信用评分、医疗诊断、手写文字识别、人脸识别</p>
-<h4 id="5-5逻辑回归-67-12"><a href="#5-5逻辑回归-67-12" class="headerlink" title="5.5逻辑回归 67.12"></a>5.5逻辑回归 67.12</h4><p><code>2023.12.04</code></p>
+<ul>
+<li>分类与回归</li>
+</ul>
+<p>回归模型限制很多，不能用于更复杂的任务。</p>
+<p>分类模型可以根据特征输入判断输出类型，他的损失函数用于预测错误的次数且不可微。他的优化方式有感知机（perceptron），支持向量机（SVM）。</p>
+<h5 id="5-4-2分类模型—概率生成模型"><a href="#5-4-2分类模型—概率生成模型" class="headerlink" title="5.4.2分类模型—概率生成模型"></a>5.4.2分类模型—概率生成模型</h5><ul>
+<li>概率论知识</li>
+</ul>
+<p>贝叶斯公式、全概率公式</p>
+<ul>
+<li>概率生成模型</li>
+</ul>
+<p>本质上是概率分布；</p>
+<p>假设有俩类别C1,C2，判断对象x属于哪类。计算P(C1|x)，若这个值大于0.5，则x∈C1，否则属于C2。</p>
+<p>实质上是通过这个模型来生成一个x，是通过模型计算出x的概率分布P(x)，然后得到x。根据全概率公式P(x)&#x3D;P(C1)P(x|C1)+P(C2)P(x|C2)，我们就是要通过训练计算出先验概率P(C1)，P(C2)，后验概率P(x|C1)，P(x|C2)这四个东西。</p>
+<p>要计算先验概率很简单，就是最简单的比例问题。</p>
+<p>计算后验概率要通过正态分布公式计算概率密度然后积分。μ是均值-正态分布中心，Σ是协方差矩阵-正态分布离散程度，D是多维特征维度。最后通过极大似然估计找到概率最大的分布。过程中可以采用协方差矩阵共享。</p>
+<p><img src="file:///D:/others/useful/Hexo/picture/846ce86a-6390-414b-b2e1-3210d46fcddd.png" alt="846ce86a-6390-414b-b2e1-3210d46fcddd"></p>
+<p>其他概率模型：伯努利分布-二值特征、朴素贝叶斯-样本各维度独立</p>
+<ul>
+<li>sigmoid函数</li>
+</ul>
+<p>通过一系列的简化可以得到分类模型实质上是sigmoid函数。当共享协方差时，分类模型则是linear函数。</p>
+<h5 id="5-4-3分类模型—逻辑回归"><a href="#5-4-3分类模型—逻辑回归" class="headerlink" title="5.4.3分类模型—逻辑回归"></a>5.4.3分类模型—逻辑回归</h5><h5 id="5-4-4分类模型python实战"><a href="#5-4-4分类模型python实战" class="headerlink" title="5.4.4分类模型python实战"></a>5.4.4分类模型python实战</h5><p><strong>(1)概率生成模型</strong></p>
+<p><strong>(2)逻辑回归模型</strong></p>
+<h4 id="5-5逻辑回归-67-12"><a href="#5-5逻辑回归-67-12" class="headerlink" title="5.5逻辑回归 67.12"></a>5.5逻辑回归 67.12</h4><p><code>2023.12.05</code></p>
 <hr>
 <h3 id="6-任务攻略"><a href="#6-任务攻略" class="headerlink" title="6.任务攻略"></a>6.任务攻略</h3><p><code>2023.11.</code></p>
 <hr>
