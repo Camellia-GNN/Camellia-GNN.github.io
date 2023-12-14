@@ -75,8 +75,9 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/61fffda3-669b-4962-88d4-b17d32d968c2.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/2272fefd-d2dc-45c0-94cf-aa9d12408c7c.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/7c8750db-ad6f-4e2c-a529-e6f53d46df95.png">
+<meta property="og:image" content="file:///D:/others/useful/Hexo/picture/f666ff3a-4748-4464-867d-4c3eda2dc277.png">
 <meta property="article:published_time" content="2023-12-12T05:56:56.926Z">
-<meta property="article:modified_time" content="2023-12-14T12:41:32.327Z">
+<meta property="article:modified_time" content="2023-12-14T15:31:31.368Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="大四上">
 <meta property="article:tag" content="计算机视觉">
@@ -479,15 +480,84 @@
 <p><img src="file:///D:/others/useful/Hexo/picture/2272fefd-d2dc-45c0-94cf-aa9d12408c7c.png" alt="2272fefd-d2dc-45c0-94cf-aa9d12408c7c"></p>
 <p>test_acc&#x3D;0.556</p>
 <p><img src="file:///D:/others/useful/Hexo/picture/7c8750db-ad6f-4e2c-a529-e6f53d46df95.png" alt="7c8750db-ad6f-4e2c-a529-e6f53d46df95"></p>
-<h4 id="2-7-Submit"><a href="#2-7-Submit" class="headerlink" title="2.7 Submit"></a>2.7 Submit</h4><p><code>2023.12.13</code></p>
+<h4 id="2-7-Submit"><a href="#2-7-Submit" class="headerlink" title="2.7 Submit"></a>2.7 Submit</h4><p><img src="file:///D:/others/useful/Hexo/picture/f666ff3a-4748-4464-867d-4c3eda2dc277.png" alt="f666ff3a-4748-4464-867d-4c3eda2dc277"></p>
+<p><code>2023.12.14</code></p>
 <hr>
-<h3 id="3-作业二"><a href="#3-作业二" class="headerlink" title="3.作业二"></a>3.作业二</h3><p>Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets, Network Visualization</p>
+<h3 id="3-作业二"><a href="#3-作业二" class="headerlink" title="3.作业二"></a>3.作业二</h3><ul>
+<li>主要内容：</li>
+</ul>
+<p>进一步理解NN的概念和多层架构是怎么构造的；</p>
+<p>理解反向回归，主要是用于全连接网络的优化和加速梯度计算的；</p>
+<p>了解除了SGD以外的其他的优化算法；</p>
+<p>完成批量归一化和分层归一化；</p>
+<p>学会dropout正则化方法；</p>
+<p>理解CNN并学会怎么训练CNN；</p>
+<p>学会应用pytorch解决DL问题；</p>
+<ul>
+<li>Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets, Network Visualization</li>
+</ul>
 <p><a target="_blank" rel="noopener" href="https://cs231n.github.io/assignments2023/assignment2/">Assignment 2 (cs231n.github.io)</a></p>
-<h4 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h4><h4 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h4><p><code>2023.12.14</code></p>
+<h4 id="3-1多层全连接神经网络"><a href="#3-1多层全连接神经网络" class="headerlink" title="3.1多层全连接神经网络"></a>3.1多层全连接神经网络</h4><p>(1)铺垫知识</p>
+<p>Multi-Layer Fully Connected Neural Networks（FullyConnectedNets.ipynb）</p>
+<p>(2)准备工作</p>
+<p>新建谷歌云端文件夹，上传作业二所需材料；</p>
+<p>进入相应作业材料云端目录，关联colab和google drive；</p>
+<p>加载数据、处理数据；</p>
+<p>对格式进行约束等；</p>
+<p>(3)</p>
+<h4 id="3-2批量归一化"><a href="#3-2批量归一化" class="headerlink" title="3.2批量归一化"></a>3.2批量归一化</h4><p>(1)铺垫知识</p>
+<ul>
+<li>Batch Normalization（BatchNormalization.ipynb）：</li>
+</ul>
+<p>ML的DL里面的NN的一种技术，用于加速NN的训练以及改善NN的性能，之前在DL课程里面实验写过。常用于CNN和FCN里。</p>
+<ul>
+<li>具体包括4步：</li>
+</ul>
+<p>对于每一小批量的输入，计算均值mean和方差；</p>
+<p>用得到的均值和方差对输入进行归一化，使其具有零均值和单位方差；</p>
+<p>对归一化后的数据进行线性变换和缩放，恢复数据的表示能力；</p>
+<p>引入可学习的参数，用于调整归一化和缩放的结果；</p>
+<p>(2)准备工作：略</p>
+<p>(3)</p>
+<h4 id="3-3丢弃正则化"><a href="#3-3丢弃正则化" class="headerlink" title="3.3丢弃正则化"></a>3.3丢弃正则化</h4><p>(1)铺垫知识</p>
+<ul>
+<li>Dropout：</li>
+</ul>
+<p>是一种正则化技术，用于减少NN过拟合、提高泛化性能、更加鲁棒(更能处理坏情况)。具体来说原理是防止NN过度依赖某些神经元。常用于CNN和FCN。</p>
+<ul>
+<li>具体包括：</li>
+</ul>
+<p>每次训练迭代，对于某些神经元，以一定的概率（通常为0.5）将其输出置为零，即丢弃；</p>
+<p>对于被保留的神经元，将其输出值乘以一个保留概率的倒数(&gt;1)，以使神经元的总输出期望保持不变；</p>
+<p>测试阶段，为了保持期望输出值不变，通常将每个神经元的权重乘以训练时的保留概率；</p>
+<p>(2)准备工作：略</p>
+<p>(3)</p>
+<h4 id="3-4卷积神经网络"><a href="#3-4卷积神经网络" class="headerlink" title="3.4卷积神经网络"></a>3.4卷积神经网络</h4><p>(1)铺垫知识</p>
+<ul>
+<li>Convolutional Neural Networks（ConvolutionalNetworks.ipynb）：</li>
+</ul>
+<p>CNN由卷积层、池化层、全连接层这三部分组成，旨在模拟视觉皮层；</p>
+<p>卷积层：是CNN核心，用一组可学习的滤波器、滑动窗口对输入进行遍历和卷积，输出特征图；</p>
+<p>池化层：减少特征图的空间尺寸和参数量，并保持输入的(特征图)空间不变性(平移、旋转、缩放)；</p>
+<p>全连接层提取特征，经过(非)线性(Linear、ReLU和Sigmoid)变换和训练，输出结果。</p>
+<p>(2)准备工作：略</p>
+<p>(3)</p>
+<h4 id="3-5深度学习框架PyTorch"><a href="#3-5深度学习框架PyTorch" class="headerlink" title="3.5深度学习框架PyTorch"></a>3.5深度学习框架PyTorch</h4><p>(1)铺垫知识</p>
+<ul>
+<li>PyTorch（PyTorch.ipynb）</li>
+</ul>
+<p>前面已经学习过了，跳。</p>
+<p>(2)准备工作：略</p>
+<p>(3)</p>
+<h4 id="3-6提交submission"><a href="#3-6提交submission" class="headerlink" title="3.6提交submission"></a>3.6提交submission</h4><p>完成除了collect_submission.ipynb所有的笔记本教程；</p>
+<p>打开collect_submission.ipynb笔记本，逐步执行；</p>
+<p>打包和生成pdf；</p>
+<p>下载到本地；</p>
+<p><code>2023.12.15</code></p>
 <hr>
 <h3 id="4-补充"><a href="#4-补充" class="headerlink" title="4.补充"></a>4.补充</h3><h4 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h4><h4 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h4><p><code>2023.12.14</code></p>
 <hr>
-<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>(1)</p>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>(1)使用谷歌硬盘是为了防止你如果只直接上传在colab进行作业，万一中断或者网络波动，你之前的运行时和变量、文件全都没了。将colab和google drive关联在一起，是为了保证随时作业且不丢失任何东西，随用随拿，然后想结束就结束。</p>
 <p>(2)</p>
 <p>(3)</p>
 <p>(4)</p>
