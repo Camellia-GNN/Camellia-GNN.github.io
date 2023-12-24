@@ -17,7 +17,7 @@
 <meta property="og:description" content="1.C++和C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-23T22:28:38.818Z">
-<meta property="article:modified_time" content="2023-12-23T22:36:33.321Z">
+<meta property="article:modified_time" content="2023-12-24T03:28:48.599Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="大四上">
 <meta property="article:tag" content="实习">
@@ -198,53 +198,27 @@
       
         <h2 id="1-C-和C"><a href="#1-C-和C" class="headerlink" title="1.C++和C"></a>1.C++和C</h2><span id="more"></span>
 
+<h5 id="C-特点"><a href="#C-特点" class="headerlink" title="C++特点"></a>C++特点</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">面向对象</span><br><span class="line">兼容C</span><br><span class="line">封装、继承、多态</span><br><span class="line">可复用性高，引入模板，实现了STL</span><br><span class="line">更加安全，cast转换、智能指针等</span><br><span class="line">功能强大，C++<span class="number">11</span>引入auto变量、lambda匿名函数等</span><br></pre></td></tr></table></figure>
 
+<h5 id="C-和C区别"><a href="#C-和C区别" class="headerlink" title="C++和C区别"></a>C++和C区别</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C++面向对象，C面向过程的结构化编程语言</span><br><span class="line">C++比C安全性更好，如cast、智能指针等</span><br><span class="line">C++比C可复用性更高，C++支持范式编程，引入了模板</span><br><span class="line">C++的结构体比C的结构体更完善</span><br></pre></td></tr></table></figure>
 
+<h5 id="C-和C的struct区别"><a href="#C-和C的struct区别" class="headerlink" title="C++和C的struct区别"></a>C++和C的struct区别</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C++                C</span><br><span class="line">可定义函数          没有函数</span><br><span class="line">有静态成员          没有静态成员</span><br><span class="line">三种皆可            默认public访问</span><br><span class="line">可继承              不能继承</span><br><span class="line">可以                不可</span><br><span class="line">使用无需加struct     使用必须加struct</span><br></pre></td></tr></table></figure>
 
+<h5 id="struct和class区别"><a href="#struct和class区别" class="headerlink" title="struct和class区别"></a>struct和class区别</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct是数据结构集合，class是对象的封装；</span><br><span class="line">struct 中默认的继承、访问控制权限是 public，而 class 中默认的继承、访问控制权限是 private ；</span><br><span class="line">class可以定义模板参数，struct不可；</span><br></pre></td></tr></table></figure>
 
+<h5 id="include和“”区别"><a href="#include和“”区别" class="headerlink" title="include&lt;&gt;和“”区别"></a>include&lt;&gt;和“”区别</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;&gt;是系统头文件，“”是自定义头文件；</span><br><span class="line">编译器预处理阶段查找头文件路径不一样；&lt;&gt;是编译器设置的头文件路径，然后系统变量；“”是先当前头文件目录，然后编译器设置的头文件路径，最后系统变量；</span><br></pre></td></tr></table></figure>
 
+<h5 id="导入C-编译不同"><a href="#导入C-编译不同" class="headerlink" title="导入C&amp;编译不同"></a>导入C&amp;编译不同</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">导入：extern &quot;C&quot; int fun()</span><br><span class="line">编译：C++支持重载，编译后的代码同时包括函数名和参数类型；C不支持重载，编译后的代码一般只包括函数名。</span><br></pre></td></tr></table></figure>
 
+<h5 id="代码→-exe过程"><a href="#代码→-exe过程" class="headerlink" title="代码→.exe过程"></a>代码→.exe过程</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">预编译：处理预编译指令(<span class="selector-id">#define</span>，<span class="selector-id">#include</span>，<span class="selector-id">#ifdef</span>等)；过滤注释；添加行号和文件名标识；</span><br><span class="line">编译：词法/语法/语义分析，代码优化，目标代码生成(汇编)，优化；</span><br><span class="line">汇编：汇编代码——机器可执行指令</span><br><span class="line">链接：把不同目标文件链接，形成可执行程序。静态链接：链接时已将要调用的函数代码放进了可执行文件，删除静态链接库<span class="selector-class">.lib</span>或<span class="selector-class">.a</span>不会有影响。动态链接：链接时未将要调用函数链接进去，只是在执行时去找此函数，删除动态链接库<span class="selector-class">.dll</span>或<span class="selector-class">.so</span>执行会失败。</span><br></pre></td></tr></table></figure>
 
+<h5 id="static关键字作用"><a href="#static关键字作用" class="headerlink" title="static关键字作用"></a>static关键字作用</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">定义全局/局部静态变量：内存(静态存储区)，作用域，初始化(未初始化自动初始化为<span class="number">0</span>，全局编译时初始化，局部第一次使用时初始化)；</span><br><span class="line">定义静态函数：只在本源文件使用；</span><br><span class="line">定义类的静态数据成员：多个对象的共享成员，是类的静态成员而非对象成员，不属于某个对象，只占一块存储空间；</span><br><span class="line">定义类的静态成员函数：同样也不是属于对象的；没有this指针；调用对象的非静态成员函数时将对象地址赋给函数的this指针，因此没有this指针的静态成员函数无法访问非静态成员。</span><br></pre></td></tr></table></figure>
 
+<h5 id="数组和指针"><a href="#数组和指针" class="headerlink" title="数组和指针"></a>数组和指针</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组：存储一系列相同类型的数据，数组名是首元素地址。顺序存放在一块连续的存储空间。数组只能一个元素一个元素赋值。</span><br><span class="line">指针：指针是一个变量，存放了所指变量的地址，指针名指向首地址。同类型指针可以相互赋值。指针可以指向任意类型的变量。<span class="number">32</span>位下指针大小永远<span class="number">4</span>，<span class="number">64</span>下永远是<span class="number">8</span>。</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p><code>2023.12.24</code></p>
+<h5 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h5><p><code>2023.12.24</code></p>
 <hr>
-<h2 id="2-OS"><a href="#2-OS" class="headerlink" title="2.OS"></a>2.OS</h2><h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><p><code>2023.12.</code></p>
+<h2 id="2-OS"><a href="#2-OS" class="headerlink" title="2.OS"></a>2.OS</h2><p><code>2023.12.</code></p>
 <hr>
 <h2 id="3-CN"><a href="#3-CN" class="headerlink" title="3.CN"></a>3.CN</h2><p><code>2023.12.</code></p>
 <hr>
