@@ -20,7 +20,7 @@
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/71b26c6d-a6d6-4ba0-8303-04b47d3b579e.png">
 <meta property="og:image" content="file:///D:/others/useful/Hexo/picture/6db30061-32ac-4ffc-9b9f-bb43e1f98ad7.png">
 <meta property="article:published_time" content="2023-10-20T09:49:59.456Z">
-<meta property="article:modified_time" content="2023-12-17T14:48:12.619Z">
+<meta property="article:modified_time" content="2023-12-24T09:03:35.893Z">
 <meta property="article:author" content="Gnn">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="剑指offer">
@@ -525,21 +525,18 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [8,17,21,18,null,null,6]</span><br><span class="line">输出：[8,17,21,18,6]</span><br></pre></td></tr></table></figure>
 
 <p><strong>我的解法：BFS</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//[0,2,4,1,null,3,-1,5,1,null,6,null,8]用例未通过，到第三层开始出问题。还是不太会写bfs。</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//答案：BFS通常都是基于队列实现的，FIFO的特性正好满足本题，每次都是先压入左节点，后压入右节点，所以左先出右后出。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">decorateRecord</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(!root)   <span class="keyword">return</span> ans;</span><br><span class="line">        queue&lt;TreeNode *&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            TreeNode *node=q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            ans.<span class="built_in">push_back</span>(node-&gt;val);</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;left)  q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;right) q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h4 id="7-2彩灯装饰记录II"><a href="#7-2彩灯装饰记录II" class="headerlink" title="7.2彩灯装饰记录II"></a>7.2彩灯装饰记录II</h4><p><strong>题目描述：</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>我的解法：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>从左到右遍历二叉树，但是每层</p>
+<p><strong>答案：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//烦死，怎么自己就是写不出来？借助临时数组</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="7-3彩灯装饰记录III"><a href="#7-3彩灯装饰记录III" class="headerlink" title="7.3彩灯装饰记录III"></a>7.3彩灯装饰记录III</h4><p><strong>题目描述：</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p><strong>我的解法：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//答案：</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="7-4"><a href="#7-4" class="headerlink" title="7.4"></a>7.4</h4><p><strong>题目描述：</strong></p>
 <p><strong>示例：</strong></p>
